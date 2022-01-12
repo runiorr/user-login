@@ -1,5 +1,5 @@
 import express from "express";
-import routes from "./routes.js";
+import routes from "./app/routes/routes.js";
 
 class App {
     constructor() {
@@ -17,4 +17,6 @@ class App {
     }
 }
 
-export default new App().server;
+const app = new App ();
+
+app.server.listen(3000, () => {console.log("Server running on port 3000!")});

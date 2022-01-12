@@ -1,11 +1,13 @@
 {
   "name": "c2d-user-project",
   "version": "1.0.0",
+  "description": "API para Cadastro e Login de usuários.",
   "type": "module",
-  "main": "server.js",
+  "main": "app.js",
+  "author": "Jose Rodrigues",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/app.js"
   },
   "dependencies": {
     "@prisma/client": "3.8.0",
