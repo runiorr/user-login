@@ -17,30 +17,33 @@ routes.post("/register", async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
 
-    password = await bcrypt.hash(password, salt);
+    const passwordHash = await bcrypt.hash(password, salt);
 
-    const createUser = await prisma.user.create({
+    await prisma.user.create({
         data: {
-            name: name,
-            email: email,
-            passwordHash: password,
+            name,
+            email,
+            passwordHash,
         },
     })
+    console.log("User registered");
+    res.status(200).json({ message: "User registered" });
 });
 
 // login route
 routes.post("/login", async (req, res) => {
-    const body = req.body;
+    let { name, email, password, } = req.body;
+    console.log(req.body);
 
     const user = await prisma.user.findUnique({ 
         where: {
-            email: body.email
+            email,
         } 
     });
     
     if (user) {
         // check user password with hashed password stored in the database
-        const validPassword = await bcrypt.compare(body.password, user.passwordHash);
+        const validPassword = await bcrypt.compare(password, user.passwordHash);
         if (validPassword) {
         res.status(200).json({ message: "Valid password" });
         } else {
