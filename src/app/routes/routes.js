@@ -2,7 +2,6 @@ import { Router } from "express";
 import SessionController from "../controllers/SessionController.js";
 import UserController from "../controllers/UserController.js";
 import auth from "../middleware/auth.js";
-//import auth from "./middleware/auth.js";
 
 const routes = Router();
 

@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import pkg from '@prisma/client';
+import pkg from "@prisma/client";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
@@ -9,7 +9,7 @@ const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
 class User {
-	constructor(name, email, password) {
+    constructor(name, email, password) {
 		this.email = email;
         this.password = password;
         this.name = name;

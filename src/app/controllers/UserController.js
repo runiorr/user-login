@@ -5,7 +5,7 @@ class UserController {
         let { name, email, password, } = req.body;
     
         if (!(name || email || password)) {
-          return res.status(400).send({ error: "Preencha os dados necessarios.\nname:\nemail:\npassword:" });
+            return res.status(400).send({ error: "Preencha os dados necessarios.\nname:\nemail:\npassword:" });
         }
 
         const newUser = new User(name, email, password);
