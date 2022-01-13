@@ -2,32 +2,21 @@ import User from "../models/User.js"
 
 class UserController {
     async register (req, res) {
-        let { name, email, password, } = req.body;
-    
-        if (!(name && email && password)) {
-            return res.status(400).json({ error: "Preencha os dados necessários. name: email: password:" });
-        }
+        try {
+            let { email, password, name } = req.body;
 
-        const newUser = new User(name, email, password);
+            const user = new User(email, password, name);
 
-        const error = await newUser.validateUser()
+            await user.validateRegister()
+        
+            await user.createUser();
+        
+            return res.status(200).json({ message: "Usuário registrado!" });
 
-        if(error != null) {
-            return res.status(400).json({ error })
+        } catch(err) {
+            return res.status(400).json({ error: err.message })
         };
-
-        const user = await newUser.findUser();
-
-        if (user) {
-            return res.json({ error: "Usuário já existe!" });
-        }
-
-        await newUser.encryptPassword();
-    
-        await newUser.createUser();
-    
-        return res.status(200).json({ message: "Usuário registrado!" });
     };
-}
+};
 
 export default new UserController();
