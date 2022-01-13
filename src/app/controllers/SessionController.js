@@ -1,11 +1,24 @@
 import User from "../models/User.js"
+import validator from "email-validator";
 
 class SessionController {
     async login (req, res) {
         let {name, email, password, } = req.body;
 
-        if (!(name || email || password)) {
-            return res.status(400).send({ error: "Preencha os dados necessarios.\nname:\nemail:\npassword:" });
+        if (!(name && email && password)) {
+            return res.status(400).send({ error: "Preencha os dados necessários. name: email: password:" });
+        }
+
+        if(String(name).length <= 3) {
+            return res.status(400).send({ error: "Insira um nome válido!" });
+        }
+
+        if(String(password).length < 8) {
+            return res.status(400).send({ error: "Insira uma senha válida! Mínimo 8 caracteres" });
+        }
+
+        if(!validator.validate(email)) {
+            return res.status(400).send({ error: "Insira um email válido!" });
         }
 
         const newUser = new User(name, email, password);
@@ -13,7 +26,7 @@ class SessionController {
         const user = await newUser.findUser();
         
         if (!user) {
-            return res.status(401).json({ error: "Usuario nao existe!" });
+            return res.status(401).json({ error: "Usuário nao existe!" });
         }
 
         const validPassword = await newUser.checkPassword(password, user.passwordHash);
