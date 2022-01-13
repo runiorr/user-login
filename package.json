@@ -7,6 +7,8 @@
   "author": "Jose Rodrigues",
   "license": "MIT",
   "scripts": {
+    "build": "docker build -t postgres-image -f Dockerfile . && docker run --name new-postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=password123 -d postgres-image",
+    "prisma": "npx prisma migrate dev --schema=./src/infra/prisma/schema.prisma",
     "dev": "nodemon src/app.js"
   },
   "dependencies": {
