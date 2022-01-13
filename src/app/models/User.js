@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import pkg from "@prisma/client";
 import jwt from "jsonwebtoken";
+import validator from "email-validator";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -14,6 +15,20 @@ class User {
         this.password = password;
         this.name = name;
 	}
+
+    async validateUser() {
+        if(String(this.name).length < 3) {
+            return { error: "Insira um nome válido!" };
+        }
+
+        if(String(this.password).length < 8) {
+            return { error: "Insira uma senha válida! Mínimo 8 caracteres" };
+        }
+
+        if(!validator.validate(this.email)) {
+            return { error: "Insira um email válido!" };
+        }
+    }
 
 	async findUser() {
         const user = await prisma.user.findUnique({ 
