@@ -24,7 +24,7 @@ class SessionController {
         
         const token = await newUser.generateAccessToken({ email: req.body.email });
 
-        return res.status(200).json({ token: token });
+        return res.status(200).json({ auth: true, token: token });
              
     };
 }

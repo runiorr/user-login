@@ -46,7 +46,7 @@ class User {
     }
 
     async generateAccessToken(email) {
-        return jwt.sign(email, process.env.JWT_SECRET, { expiresIn: '1800s' });
+        return jwt.sign(email, process.env.JWT_SECRET, { expiresIn: '300s' });
     }  
       
 }
