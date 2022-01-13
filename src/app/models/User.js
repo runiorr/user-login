@@ -1,5 +1,9 @@
 import bcrypt from "bcrypt";
 import pkg from '@prisma/client';
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
@@ -40,6 +44,13 @@ class User {
             },
         })
     }
+
+    async generateAccessToken(email) {
+        return jwt.sign(email, process.env.JWT_SECRET, { expiresIn: '1800s' });
+    }  
+      
 }
 
 export default User;
+
+

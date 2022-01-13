@@ -1,6 +1,7 @@
 /* import jwt from "jsonwebtoken";
 import { promisify } from "util";
 
+
 export default async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -17,4 +18,6 @@ export default async (req, res, next) => {
   } catch (err) {
     return res.status(401).json({ error: "Token não vale" });
   }
-}; */
+};
+
+ */
