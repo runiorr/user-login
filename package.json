@@ -7,7 +7,7 @@
   "author": "Jose Rodrigues",
   "license": "MIT",
   "scripts": {
-    "build": "docker build -t postgres-image -f Dockerfile . && docker run --name new-postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=password123 -d postgres-image",
+    "build": "docker build -t postgres-image -f Dockerfile . && docker run --name new-postgres-db -p 5432:5432 -d postgres-image",
     "prisma": "npx prisma migrate dev --schema=./src/infra/prisma/schema.prisma",
     "dev": "nodemon src/app.js"
   },
@@ -17,7 +17,6 @@
     "dotenv": "^11.0.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.2",
-    "express-session": "^1.17.2",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
