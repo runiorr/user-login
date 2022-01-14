@@ -38,7 +38,7 @@ Na falha, ela informa o erro ocorrido.
 
 Após ter seu cadastro e estar logado, você passa o JWT através do Header "Authorization" e recebe acesso a rota. Contém somente uma mensagem informando que está logado.
 
-# Como inicar?
+# Como testar?
 Baixe os arquivos em sua máquina. Dentro do diretório escolhido, execute:
 
 
