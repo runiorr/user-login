@@ -36,7 +36,7 @@ Na falha, ela informa o erro ocorrido.
 
 ## /home
 
-Nessa rota, você só informa o JWT e recebe acesso. Uma mensagem informado que está logado.
+Após ter seu cadastro e estar logado, você passa o JWT através do Header "Authorization" e recebe acesso a rota, uma mensagem informando que está logado.
 
 # Como inicar?
 Baixe os arquivos em sua máquina. Dentro do diretório escolhido, execute:
