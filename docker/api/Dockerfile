@@ -1,21 +1,25 @@
-FROM node:latest
+#Create the base OS image
+FROM node:latest AS base
 
-WORKDIR /app
+#Update the OS ubuntu image
+RUN apt-get -y update
 
-COPY . .
+#Install packages
+RUN apt-get -y install docker
 
 # Install app dependencies
-
+COPY app/package.json .
 RUN yarn
+
+COPY app/ ./
 
 # Build db container
 
-RUN yarn run build
+RUN docker run --name new-postgres-db -p 5432:5432 -d test_db
 
 # Prisma migrations
 
-RUN yarn run prisma
+RUN prisma migrate dev --schema=./app/src/infra/prisma/schema.prisma
 
 
-EXPOSE 3000
-CMD [ "node", "src/app.js" ] 
+CMD [ "node", "src/app.js" ]  
