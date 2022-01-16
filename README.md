@@ -3,6 +3,8 @@ A API possui três rotas: **/register  /login  /home**
 
 Irei explicar a funcionalidade de cada rota, logo após explico como inicar em sua máquina.
 
+Configurando o SMTP na .env, ela enviará um email nas três ocasiões: Cadastro com sucesso, login com sucesso e tentativa de acesso.
+
 ## /register
 A primeira rota recebe três parâmetros pelo body da requisição. **name, email e password**
 
