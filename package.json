@@ -9,7 +9,8 @@
   "scripts": {
     "build": "docker build -t postgres-image -f Dockerfile . && docker run --name new-postgres-db -p 5432:5432 -d postgres-image",
     "prisma": "npx prisma migrate dev --schema=./src/infra/prisma/schema.prisma",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "start": "prisma migrate dev --schema=./src/infra/prisma/schema.prisma && node src/app.js"
   },
   "dependencies": {
     "@prisma/client": "3.8.0",
