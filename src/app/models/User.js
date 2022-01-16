@@ -3,6 +3,7 @@ import pkg from "@prisma/client";
 import jwt from "jsonwebtoken";
 import validator from "email-validator";
 import dotenv from "dotenv";
+import Mailer from "./Email.js";
 
 dotenv.config();
 
@@ -54,10 +55,13 @@ class User {
         if(!user) {
             throw new Error("Usuário não existe!")
         };
+
+        this.name = user.name;
         
         const validPassword = await this.checkPassword(this.password, user.passwordHash);
 
         if(!validPassword) {
+            Mailer.emailLoginFail(user);
             throw new Error("Senha incorreta!");
         }
     }
