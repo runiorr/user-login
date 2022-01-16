@@ -39,28 +39,19 @@ Na falha, ela informa o erro ocorrido.
 Após ter seu cadastro e estar logado, você passa o JWT através do Header "Authorization" e recebe acesso a rota. Contém somente uma mensagem informando que está logado.
 
 # Como testar?
-Baixe os arquivos em sua máquina. Dentro do diretório escolhido, execute:
+Clone o repositório e entre nele:
 
 
 
-    npm install // Caso utilize NPM
-    yarn // Caso utilize Yarn
-
-
-Configure sua .env (o arquivo _.env.example_ já possui a DATABASE_URL configurada, pode utilizar a mesma).
-
-No arquivo _package.json_, terá 3 scripts prontos:
-
-- build : Executa o Dockerfile, cria a imagem com o banco de dados e inicia o contâiner.
-- prisma : Realiza as migrations, conectando o banco de dados a API.
-- dev : Inicia a API.
-
-Execute-os nessa ordem através do comando:
+    git clone https://github.com/runiorr/user-login runiorr/ && cd runiorr/
 
 
 
-    npm run <script> // Caso utilize NPM
-    yarn run <script> // Caso utilize Yarn
+Execute esse comando:
 
 
-*Pronto*, só testar as rotas e/ou utilizar como quiser!
+
+    docker-compose up
+
+
+*Pronto!* O acesso as rotas se dá por meio do http://localhost:3000/
