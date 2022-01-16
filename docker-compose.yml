@@ -1,16 +1,14 @@
 version: '3.3'
 services:
   db:
-    # will build ./docker/db/Dockerfile
-    build:
-      context: ./
-      dockerfile: ./docker/db/Dockerfile
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: c2dproject
     ports:
-      - "5432:5432"
+     - "5432:5432"
   api:
-    # will build ./docker/web/Dockerfile
-    build:
-      context: ./
-      dockerfile: ./docker/api/Dockerfile
-    ports:
-     - "3000:3000"
+    build: .
+    
+    restart: on-failure
+    command: yarn run prisma

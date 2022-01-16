@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "docker run --name new-postgres-db -p 5432:5432 -d test_db",
-    "prisma": "npx prisma migrate dev --schema=./src/infra/prisma/schema.prisma",
+    "prisma": "prisma migrate dev --schema=./src/infra/prisma/schema.prisma",
     "dev": "nodemon src/app.js"
   },
   "dependencies": {
