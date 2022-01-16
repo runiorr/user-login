@@ -47,7 +47,7 @@ Clone o repositório e entre nele:
 
 
 
-Execute esse comando:
+Configure a .env e execute esse comando:
 
 
 
