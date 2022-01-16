@@ -7,9 +7,7 @@
   "author": "Jose Rodrigues",
   "license": "MIT",
   "scripts": {
-    "build": "docker run --name new-postgres-db -p 5432:5432 -d test_db",
-    "prisma": "prisma migrate dev --schema=./src/infra/prisma/schema.prisma",
-    "dev": "nodemon src/app.js"
+    "start": "prisma migrate dev --schema=./src/infra/prisma/schema.prisma && node src/app.js"
   },
   "dependencies": {
     "@prisma/client": "3.8.0",

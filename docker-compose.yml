@@ -9,6 +9,10 @@ services:
      - "5432:5432"
   api:
     build: .
-    
+    depends_on: 
+      - db
     restart: on-failure
-    command: yarn run prisma
+    ports:
+      - "3000:3000"
+    command: yarn run start
+    tty: true
