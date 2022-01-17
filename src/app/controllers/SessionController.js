@@ -1,5 +1,4 @@
 import User from "../models/User.js"
-import Mailer from "../models/Email.js"
 
 class SessionController {
     async login (req, res) {
@@ -8,11 +7,7 @@ class SessionController {
 
             const user = new User(email, password);
 
-            await user.validateLogin();
-            
-            const token = await user.generateAccessToken({ email: req.body.email });
-
-            Mailer.emailLoginSucess(user, token);
+            const token = await user.validateLogin();
 
             return res.status(200).json({ auth: true, message: "Usuário logado! Você também receberá o token por email.", token: token });
         } catch(err) {

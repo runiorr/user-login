@@ -47,6 +47,10 @@ class User {
         if(user) {
             throw new Error("Usuário já existe!")
         };
+
+        await this.createUser();
+
+        Mailer.emailRegister(this);
     }
 
     async validateLogin() {
@@ -64,6 +68,12 @@ class User {
             Mailer.emailLoginFail(user);
             throw new Error("Senha incorreta!");
         }
+
+        const token = await this.generateAccessToken({ email: this.email });
+
+        Mailer.emailLoginSucess(user, token);
+
+        return token;
     }
 
     async findUser() {

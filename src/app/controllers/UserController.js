@@ -1,5 +1,4 @@
 import User from "../models/User.js"
-import Mailer from "../models/Email.js"
 
 class UserController {
     async register (req, res) {
@@ -9,10 +8,6 @@ class UserController {
             const user = new User(email, password, name);
 
             await user.validateRegister()
-        
-            await user.createUser();
-
-            Mailer.emailRegister(user);
         
             return res.status(200).json({ message: "Usuário registrado! Olhe sua caixa de email :)" });
 
