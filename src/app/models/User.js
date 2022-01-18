@@ -50,7 +50,7 @@ class User {
 
         await this.createUser();
 
-        Mailer.emailRegister(this);
+        //Mailer.emailRegister(this);
     }
 
     async validateLogin() {
@@ -65,13 +65,13 @@ class User {
         const validPassword = await this.checkPassword(this.password, user.passwordHash);
 
         if(!validPassword) {
-            Mailer.emailLoginFail(user);
+            //Mailer.emailLoginFail(user);
             throw new Error("Senha incorreta!");
         }
 
         const token = await this.generateAccessToken({ userId: user.id });
 
-        Mailer.emailLoginSucess(user, token);
+        //Mailer.emailLoginSucess(user, token);
 
         return token;
     }

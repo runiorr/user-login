@@ -3,7 +3,6 @@ A API possui três rotas: **/register  /login  /home**
 
 Irei explicar a funcionalidade de cada rota, logo após explico como inicar em sua máquina.
 
-Configurando o SMTP na .env, ela enviará um email nas três ocasiões: Cadastro com sucesso, login com sucesso e tentativa de acesso.
 
 ## /register
 A primeira rota recebe três parâmetros pelo body da requisição. **name, email e password**
@@ -48,12 +47,15 @@ Clone o repositório e entre nele:
     git clone https://github.com/runiorr/user-login runiorr/ && cd runiorr/
 
 
+Configurando o SMTP na .env, ela enviará um email nas três ocasiões: Cadastro com sucesso, login com sucesso e tentativa de acesso. Necessário ativar as funções dentro do User.model
 
-Configure a .env e execute esse comando:
+Dentro de nginx.conf, escolha quantos containers deseja criar.
+
+Após configurar a .env, execute esse comando:
 
 
 
-    docker-compose up --scale api=4
+    docker-compose up --scale api=x // x = quantidade de containers desejados | Altere no arquivo nginx.conf também
 
 
 Ele irá criar quatro containers com a API, um com o banco de dados e outro com o Nginx como proxy reverso.
