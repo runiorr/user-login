@@ -69,7 +69,7 @@ class User {
             throw new Error("Senha incorreta!");
         }
 
-        const token = await this.generateAccessToken({ email: this.email });
+        const token = await this.generateAccessToken({ userId: user.id });
 
         Mailer.emailLoginSucess(user, token);
 
@@ -107,8 +107,8 @@ class User {
         })
     }
 
-    async generateAccessToken(email) {
-        return jwt.sign(email, process.env.JWT_SECRET, { expiresIn: '300s' });
+    async generateAccessToken(userId) {
+        return jwt.sign(userId, process.env.JWT_SECRET, { expiresIn: '300s' });
     }  
       
 }
