@@ -57,7 +57,8 @@ Após configurar a .env, execute esse comando:
 
 
 
-    docker-compose up --scale api=x // x = quantidade de containers desejados | Altere no arquivo nginx.conf também
+    docker-compose up --scale api=x // 
+    x = containers da api, atual = 2 | Caso mudar, altere no arquivo nginx.conf.
 
 
 Ele irá criar dois containers com a API, um com o banco de dados e outro com o Nginx como proxy reverso.
