@@ -53,7 +53,8 @@ Configure a .env e execute esse comando:
 
 
 
-    docker-compose up
+    docker-compose up --scale api=4
 
 
-*Pronto!* O acesso as rotas se dá por meio do http://localhost:3000/
+Ele irá criar quatro containers com a API, um com o banco de dados e outro com o Nginx como proxy reverso.
+*Pronto!* O acesso as rotas se dá por meio do http://localhost:8080/. Se sinta a vontade para editar o código. 

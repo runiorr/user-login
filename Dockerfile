@@ -3,7 +3,7 @@
 #ENV POSTGRES_DB c2dproject
 
 
-FROM node:latest
+FROM node:alpine
 
 WORKDIR /app
 

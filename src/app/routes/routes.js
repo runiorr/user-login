@@ -13,4 +13,8 @@ routes.get("/home", auth, (req, res) => {
     res.json("Você está logado")
 })
 
+routes.get("/test", (req, res) => {
+    res.json("Rota teste")
+})
+
 export default routes;

@@ -19,6 +19,7 @@
     "email-validator": "^2.0.4",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
+    "loadtest": "^5.1.2",
     "nodemailer": "^6.7.2"
   },
   "devDependencies": {
