@@ -46,7 +46,7 @@ Clone o repositório e entre nele:
 
 
 
-    git clone https://github.com/runiorr/user-login runiorr/ && cd runiorr/
+    git clone https://github.com/runiorr/user-login user-login/ && cd user-login/
 
 
 Configurando o SMTP na .env, ela enviará um email nas três ocasiões: Cadastro com sucesso, login com sucesso e tentativa de acesso. Necessário ativar as funções dentro do User.model
