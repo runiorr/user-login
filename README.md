@@ -4,6 +4,8 @@ A API possui três rotas: **/register  /login  /home**
 Irei explicar a funcionalidade de cada rota, logo após explico como inicar em sua máquina.
 
 
+Iniciando com docker compose, irá iniciar com um proxy reverso.
+
 ## /register
 A primeira rota recebe três parâmetros pelo body da requisição. **name, email e password**
 
